@@ -1,0 +1,378 @@
+console.log(12);
+VM247:1 12
+undefined
+console.log('Vikrant');
+VM272:1 Vikrant
+undefined
+var a = 10;
+undefined
+//It gives the data type of the Variable
+typeof(a);
+"number"
+//It gives the data type of the Variable
+typeof a;
+"number"
+
+typeof a
+"number"
+a = 'vikrant'
+"vikrant"
+
+typeof a
+"string"
+a = 10;
+10
+a.toString();
+"10"
+a = a.toString();
+"10"
+a
+"10"
+parseInt(a);
+10
+parseInt("102");
+102
+parseInt("102sghksfd");
+102
+parseInt("sdf102sghksfd");
+NaN
+//NaN -> Not a Number
+undefined
+var b;
+undefined
+b
+undefined
+console.log(b);
+VM1240:1 undefined
+undefined
+a
+"10"
+a = "Vikrant";
+"Vikrant"
+a.toUpperCase();
+"VIKRANT"
+a.toLowerCase();
+"vikrant"
+a
+"Vikrant"
+a = "10";
+"10"
+b = 20;
+20
+a+b;
+"1020"
+parseInt(a)+b;
+30
+a = 10;
+10
+b =3
+3
+a%b;
+1
+str = 'Hello World';
+"Hello World"
+var str;
+str = 'Hello World';
+"Hello World"
+ch = 'A';
+"A"
+str[0];
+"H"
+str.length;
+11
+str[str.length-1];
+"d"
+//&& ||
+undefined
+b
+3
+a
+10
+if(a%2 == 0)
+	console.log('Number is even');
+VM2354:2 Number is even
+undefined
+if(b%2 == 1)
+	console.log('Number is Odd');
+VM2396:2 Number is Odd
+undefined
+if(){
+
+}
+else if(){
+
+}
+else{
+
+}
+
+VM2486:1 Uncaught SyntaxError: Unexpected token ')'
+str
+"Hello World"
+str+" from computer";
+"Hello World from computer"
+str
+"Hello World"
+str.charAt(1)
+"e"
+str.charAt(kfd);
+VM2682:1 Uncaught ReferenceError: kfd is not defined
+    at <anonymous>:1:12
+(anonymous) @ VM2682:1
+str.concat(" from COmputer")
+"Hello World from COmputer"
+str
+"Hello World"
+str.includes();
+false
+str.includes(' ');
+true
+str.includes('W');
+true
+str.includes('y');
+false
+str.includes('ell');
+true
+str.includes('Ell');
+false
+str.includes('ellH');
+false
+str.indexOf('o')
+4
+str.lastIndexOf('o');
+7
+str.substring();
+"Hello World"
+str.substring(0);
+"Hello World"
+str.substring(1);
+"ello World"
+str.substring(0,4);
+"Hell"
+str.substr(0);
+"Hello World"
+str.substr(4);
+"o World"
+str.substr(0,2);
+"He"
+str = "       Hello World       ";
+"       Hello World       "
+str
+"       Hello World       "
+str.trim();
+"Hello World"
+str
+"       Hello World       "
+str.trimLeft();
+"Hello World       "
+str.trimRight();
+"       Hello World"
+str.trimEnd();
+"       Hello World"
+str.trimStart();
+"Hello World       "
+str = str.trim();
+"Hello World"
+arr = [12,3,4,5];
+(4) [12, 3, 4, 5]
+arr
+(4) [12, 3, 4, 5]
+arr.length;
+4
+arr = [12,3,4,5,'Vikrant',true,2349.234];
+(7) [12, 3, 4, 5, "Vikrant", true, 2349.234]
+arr.push(false);
+8
+arr
+(8) [12, 3, 4, 5, "Vikrant", true, 2349.234, false]
+arr.pop();
+false
+arr
+(7) [12, 3, 4, 5, "Vikrant", true, 2349.234]
+str
+"Hello World"
+arr
+(7) [12, 3, 4, 5, "Vikrant", true, 2349.234]
+for(var i=0;i<str.length;i++){
+	console.log(str[i]);
+}
+VM5099:2 H
+VM5099:2 e
+VM5099:2 l
+VM5099:2 l
+VM5099:2 o
+VM5099:2  
+VM5099:2 W
+VM5099:2 o
+VM5099:2 r
+VM5099:2 l
+VM5099:2 d
+undefined
+for(var i=0;i<arr.length;i++){
+	console.log(arr[i]);
+}
+VM5153:2 12
+VM5153:2 3
+VM5153:2 4
+VM5153:2 5
+VM5153:2 Vikrant
+VM5153:2 true
+VM5153:2 2349.234
+undefined
+a
+10
+//for-of loop
+for(var item of str){
+	console.log(str);
+}
+VM5405:3 Hello World
+VM5405:3 Hello World
+VM5405:3 Hello World
+VM5405:3 Hello World
+VM5405:3 Hello World
+VM5405:3 Hello World
+VM5405:3 Hello World
+VM5405:3 Hello World
+VM5405:3 Hello World
+VM5405:3 Hello World
+VM5405:3 Hello World
+undefined
+//for-of loop
+for(var item of str){
+	console.log(item);
+}
+VM5444:3 H
+VM5444:3 e
+VM5444:3 l
+VM5444:3 l
+VM5444:3 o
+VM5444:3  
+VM5444:3 W
+VM5444:3 o
+VM5444:3 r
+VM5444:3 l
+VM5444:3 d
+undefined
+//for-of loop
+for(var item of arr){
+	console.log(item);
+}
+VM5470:3 12
+VM5470:3 3
+VM5470:3 4
+VM5470:3 5
+VM5470:3 Vikrant
+VM5470:3 true
+VM5470:3 2349.234
+undefined
+Array
+ƒ Array() { [native code] }
+typeof arr;
+"object"
+arr instanceof Array;
+true
+Object
+ƒ Object() { [native code] }
+var object1 = new Object();
+undefined
+object1
+{}
+//Literal Form
+var obj = {
+	id:101,
+	name:'vikrant'
+};
+undefined
+obj
+{id: 101, name: "vikrant"}
+obj.id
+101
+obj.name;
+"vikrant"
+obj.age;
+undefined
+obj.age = 23;
+23
+obj
+{id: 101, name: "vikrant", age: 23}
+object1.empid = 10024;
+10024
+object1
+{empid: 10024}
+delete object1.empid;
+true
+object1;
+{}
+delete object1.empid;
+true
+//for-in loop;
+undefined
+//for-in loop;
+for(var item in obj){
+	console.log(item);
+}
+VM6720:3 id
+VM6720:3 name
+VM6720:3 age
+undefined
+//for-in loop;
+for(var item in obj){
+	console.log(obj.item);
+}
+VM6781:3 undefined
+VM6781:3 undefined
+VM6781:3 undefined
+undefined
+obj
+{id: 101, name: "vikrant", age: 23}
+obj.id;
+101
+obj["id"];
+101
+//for-in loop;
+for(var item in obj){
+	console.log('Key = 'item,'  and Value = ',obj["item"]);
+}
+VM7068:3 Uncaught SyntaxError: missing ) after argument list
+//for-in loop;
+for(var item in obj){
+	console.log('Key = 'item,'  and Value = ',obj["age"]item]);
+}
+VM7090:3 Uncaught SyntaxError: missing ) after argument list
+//for-in loop;
+for(var item in obj){
+	console.log('Key = ',item,'  and Value = ',obj["age"]item]);
+}
+VM7109:3 Uncaught SyntaxError: missing ) after argument list
+//for-in loop;
+for(var item in obj){
+	console.log('Key = '+item+'  and Value = '+obj[item]);
+}
+VM7181:3 Key = id  and Value = 101
+VM7181:3 Key = name  and Value = vikrant
+VM7181:3 Key = age  and Value = 23
+undefined
+//for-in loop;
+for(var item in obj){
+	console.log('Key = '+item+'  and Value = '+obj["item"]);
+}
+VM7206:3 Key = id  and Value = undefined
+VM7206:3 Key = name  and Value = undefined
+VM7206:3 Key = age  and Value = undefined
+undefined
+//for-in loop;
+for(var item in obj){
+	console.log('Key = '+item+'  and Value = '+obj[item]);
+}
+VM7250:3 Key = id  and Value = 101
+VM7250:3 Key = name  and Value = vikrant
+VM7250:3 Key = age  and Value = 23
+undefined
+//for-in loop;
+for(var item in obj){
+	console.log(typeof item);
+}
+VM7304:3 string
+VM7304:3 string
+VM7304:3 string
+undefined
