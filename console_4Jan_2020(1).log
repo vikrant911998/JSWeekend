@@ -1,0 +1,42 @@
+function RestDemo(a,b,...n){
+    console.log(a,b,n);
+}
+undefined
+RestDemo(1);
+VM264:2 1 undefined []length: 0__proto__: Array(0)
+undefined
+RestDemo(1,2);
+VM264:2 1 2 []
+undefined
+RestDemo(1,2,6,3,4,5,7,7);
+VM264:2 1 2 (6) [6, 3, 4, 5, 7, 7]
+undefined
+function RestDemo(...n){
+    console.log(n);
+    sum = 0;
+    for(let item of n){
+        sum +=item;
+    }
+    console.log('Sum = ',sum);
+}
+undefined
+RestDemo(1,2);
+VM569:2 (2) [1, 2]
+VM569:7 Sum =  3
+undefined
+RestDemo(1,2,6,3,4,5,7,7);
+VM569:2 (8) [1, 2, 6, 3, 4, 5, 7, 7]
+VM569:7 Sum =  35
+undefined
+arr = [12,3,1,45,61];
+(5) [12, 3, 1, 45, 61]
+m = [200,300,...arr];
+(7) [200, 300, 12, 3, 1, 45, 61]
+obj = {id:101,name:'brian'};
+{id: 101, name: "brian"}
+obj2 = {sid:203,...obj};
+{sid: 203, id: 101, name: "brian"}
+obj2
+{sid: 203, id: 101, name: "brian"}
+m
+(7) [200, 300, 12, 3, 1, 45, 61]

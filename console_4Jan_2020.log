@@ -1,0 +1,200 @@
+var object = new Object();
+undefined
+object
+{}
+object.id =101;
+101
+object
+{id: 101}__proto__: Object
+delete object.id;
+true
+var arr = new Array();
+undefined
+arr.push(102);
+1
+arr
+[102]
+var obj = {};
+undefined
+arr
+[102]0: 102length: 1__proto__: Array(0)length: 0constructor: ƒ Array()concat: ƒ concat()copyWithin: ƒ copyWithin()fill: ƒ fill()find: ƒ find()findIndex: ƒ findIndex()lastIndexOf: ƒ lastIndexOf()pop: ƒ pop()push: ƒ push()reverse: ƒ reverse()shift: ƒ shift()unshift: ƒ unshift()slice: ƒ slice()sort: ƒ sort()splice: ƒ splice()includes: ƒ includes()indexOf: ƒ indexOf()join: ƒ join()keys: ƒ keys()entries: ƒ entries()values: ƒ values()forEach: ƒ forEach()filter: ƒ filter()flat: ƒ flat()flatMap: ƒ flatMap()map: ƒ map()every: ƒ every()some: ƒ some()reduce: ƒ reduce()reduceRight: ƒ reduceRight()toLocaleString: ƒ toLocaleString()toString: ƒ toString()Symbol(Symbol.iterator): ƒ values()Symbol(Symbol.unscopables): {copyWithin: true, entries: true, fill: true, find: true, findIndex: true, …}__proto__: Object
+Object
+ƒ Object() { [native code] }
+function ConstructorStyle(id,name){
+    this.id  = id;
+
+}
+undefined
+function ConstructorStyle(id,name){
+    this.cid  = id;
+    this.cname = name;
+
+}
+undefined
+var obj = new ConstructorStyle(102,'brian');
+undefined
+obj
+ConstructorStyle {cid: 102, cname: "brian"}cid: 102cname: "brian"__proto__: Object
+function ConstructorStyle(id,name){
+    this.cid  = id;
+    this.cname = name;
+    this.print(){
+        console.log('Id = ',id);
+        console.log('Name = ',name);
+    }
+}
+VM1342:4 Uncaught SyntaxError: Unexpected token '{'
+function ConstructorStyle(id,name){
+    this.cid  = id;
+    this.cname = name;
+    this.print = function (){
+        console.log('Id = ',cid);
+        console.log('Name = ',cname);
+    }
+}
+undefined
+var obj1 = new ConstructorStyle(101,'Ram');
+undefined
+obj1
+ConstructorStyle {cid: 101, cname: "Ram", print: ƒ}cid: 101cname: "Ram"print: ƒ ()length: 0name: ""arguments: nullcaller: nullprototype: {constructor: ƒ}__proto__: ƒ ()[[FunctionLocation]]: VM1429:4[[Scopes]]: Scopes[1]__proto__: Object
+obj1.print();
+VM1429:5 Uncaught ReferenceError: cid is not defined
+    at ConstructorStyle.print (<anonymous>:5:29)
+    at <anonymous>:1:6
+ConstructorStyle.print @ VM1429:5
+(anonymous) @ VM1843:1
+function ConstructorStyle(id,name){
+    this.cid  = id;
+    this.cname = name;
+    this.print = function (){
+        console.log('Id = ',this.cid);
+        console.log('Name = ',this.cname);
+    }
+}
+undefined
+var obj1 = new ConstructorStyle(101,'Ram');
+undefined
+obj1.print();
+VM1915:5 Id =  101
+VM1915:6 Name =  Ram
+undefined
+function ConstructorStyle(id,name){
+    this.cid  = id;
+    this.cname = name;
+    function print1(){
+        console.log('Id = ',this.cid);
+        console.log('Name = ',this.cname);
+    }
+}
+undefined
+var obj1 = new ConstructorStyle(101,'Ram');
+undefined
+obj1
+ConstructorStyle {cid: 101, cname: "Ram"}cid: 101cname: "Ram"__proto__: Object
+obj1.print1();
+VM2189:1 Uncaught TypeError: obj1.print1 is not a function
+    at <anonymous>:1:6
+(anonymous) @ VM2189:1
+function ConstructorStyle(id,name){
+    this.cid  = id;
+    this.cname = name;
+}
+undefined
+ConstructorStyle.prototype.print = function(){
+    console.log('Id = ',this.cid);
+    console.log('Name = ',this.cname);
+}
+ƒ (){
+    console.log('Id = ',this.cid);
+    console.log('Name = ',this.cname);
+}
+var obj1 = new ConstructorStyle(101,'Ram');
+undefined
+obj1
+ConstructorStyle {cid: 101, cname: "Ram"}
+obj1.print();
+VM2455:2 Id =  101
+VM2455:3 Name =  Ram
+undefined
+class Student{
+    constructor(id,name){
+        this.sid = id;
+        this.sname = name;
+    }
+
+    show(){
+        console.log(this.sid);
+        console.log(this.sname);
+    }   
+
+}
+undefined
+var obj = new Student(11101,'Shyam');
+undefined
+obj
+Student {sid: 11101, sname: "Shyam"}sid: 11101sname: "Shyam"__proto__: Object
+obj.show();
+VM3036:8 11101
+VM3036:9 Shyam
+undefined
+class Student{
+    constructor(id,name){
+        this.sid = id;
+        this.sname = name;
+    }
+
+    show(){
+        console.log(this.sid);
+        console.log(this.sname);
+    }   
+
+}
+
+
+VM3512:1 Uncaught SyntaxError: Identifier 'Student' has already been declared
+    at <anonymous>:1:1
+(anonymous) @ VM3512:1
+class CollegeStudent extends Student{
+    constructor(id){
+        this.collegeid = id;
+        }
+
+    print(){
+        console.log(this.collegeid);
+    }
+}
+undefined
+var obj = new CollegeStudent();
+VM3803:3 Uncaught ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
+    at new CollegeStudent (<anonymous>:3:9)
+    at <anonymous>:1:11
+CollegeStudent @ VM3803:3
+(anonymous) @ VM3901:1
+class CollegeStudent extends Student{
+    constructor(id,sid,sname){
+        super(sid,sname);
+        this.collegeid = id;
+        }
+
+    print(){
+        console.log(this.collegeid);
+    }
+}
+VM4128:1 Uncaught SyntaxError: Identifier 'CollegeStudent' has already been declared
+    at <anonymous>:1:1
+(anonymous) @ VM4128:1
+class CollegeStudent1 extends Student{
+    constructor(id,sid,sname){
+        super(sid,sname);
+        this.collegeid = id;
+        }
+
+    print(){
+        console.log(this.collegeid);
+    }
+}
+undefined
+var obj = new CollegeStudent1(101,111022,'brian');
+undefined
+obj
+CollegeStudent1 {sid: 111022, sname: "brian", collegeid: 101}
