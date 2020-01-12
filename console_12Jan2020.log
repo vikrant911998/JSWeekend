@@ -1,0 +1,499 @@
+function Student(id,name){
+    this.id = id;
+}
+undefined
+function Student(id,name){
+    this.id = id;
+    this.name = name;
+}
+undefined
+obj={};
+{}
+obj.id = 101
+101
+obj
+{id: 101}
+let object = new Student(101,'Ram');
+undefined
+object
+Student {id: 101, name: "Ram"}id: 101name: "Ram"__proto__: Object
+function Student(id,name){
+    this.id = id;
+    this.name = name;
+}
+
+
+
+undefined
+Student.prototype.print(){
+    console.log(this.id);
+    console.log(this.name);
+}
+VM897:1 Uncaught SyntaxError: Unexpected token '{'
+Student.prototype.print = function (){
+    console.log(this.id);
+    console.log(this.name);
+}
+ƒ (){
+    console.log(this.id);
+    console.log(this.name);
+}
+let object = new Student(101,'Ram');
+VM957:1 Uncaught SyntaxError: Identifier 'object' has already been declared
+    at <anonymous>:1:1
+(anonymous) @ VM957:1
+var object = new Student(101,'Ram');
+VM1014:1 Uncaught SyntaxError: Identifier 'object' has already been declared
+    at <anonymous>:1:1
+(anonymous) @ VM1014:1
+var object1 = new Student(101,'Ram');
+undefined
+object1
+Student {id: 101, name: "Ram"}id: 101name: "Ram"__proto__: Object
+object1.print();
+VM942:2 101
+VM942:3 Ram
+undefined
+class Employee{
+    constructor(id,name){
+        this.id = id;
+        this.name = name;
+    }
+    
+    show(){
+        console.log(this.id);
+        console.log(this.name);
+    }
+}
+undefined
+var temp1 = new Employee(23432,'Vikas');
+undefined
+temp1
+Employee {id: 23432, name: "Vikas"}id: 23432name: "Vikas"__proto__: Object
+temp1.show();
+VM1656:8 23432
+VM1656:9 Vikas
+undefined
+temp1;
+Employee {id: 23432, name: "Vikas"}
+var id = temp1;
+undefined
+var {id} = temp1;
+undefined
+id
+23432
+var {id,name} = temp1;
+undefined
+id
+23432
+name
+"Vikas"
+console.log(id);
+VM2150:1 23432
+undefined
+var {empid,empname,empadd}= temp1;
+undefined
+empid
+undefined
+empname
+undefined
+empadd
+undefined
+var {empid,empname}= temp1;
+undefined
+var {id,name,add} = temp1;
+undefined
+id
+23432
+name
+"Vikas"
+add
+undefined
+var {empid,empname}= {empid:2345,empname:'Ram'};
+undefined
+empid
+2345
+empname
+"Ram"
+var {id:empid,name:empname}= temp1;
+undefined
+empid
+23432
+empname
+"Vikas"
+id
+23432
+object
+Student {id: 101, name: "Ram"}
+var {id,name,add:'Rohini'} = object;
+VM3040:1 Uncaught SyntaxError: Invalid destructuring assignment target
+var {id,name,add='Rohini'} = object;
+undefined
+id
+101
+name
+"Ram"
+add
+"Rohini"
+var {id:sid=101,name:sname='Ram',add:sadd='Pitampura'} = object;
+undefined
+sid
+101
+sname
+"Ram"
+sadd
+"Pitampura"
+var obj = {id:999988,name:'John Wick',address:'Paris'};
+undefined
+function print(obj){
+    console.log(obj.id);
+    console.log(obj.name);
+    console.log(obj.address);
+}
+undefined
+print(obj);
+VM3718:2 999988
+VM3718:3 John Wick
+VM3718:4 Paris
+undefined
+function print(obj){
+    console.log(obj.id);
+}
+undefined
+print(obj);
+VM3783:2 999988
+undefined
+function print({id}){
+    console.log(id);
+}
+undefined
+print(obj);
+VM3877:2 999988
+undefined
+var arr = [23,'blue',true,'TANK'];
+undefined
+arr
+(4) [23, "blue", true, "TANK"]
+var [one,two,three] = arr;
+undefined
+one
+23
+two
+"blue"
+three
+true
+var [a,b=10]=[true];
+undefined
+a
+true
+b
+10
+var [a,b=10]=[true,'TECH'];
+undefined
+a
+true
+b
+"TECH"
+function print([a,b]){
+    console.log(a);
+    console.log(b);
+}
+undefined
+print(arr);
+VM4498:2 23
+VM4498:3 blue
+undefined
+function print([a, ...b]){
+    console.log(a);
+    console.log(b);
+}
+undefined
+print(arr);
+VM4576:2 23
+VM4576:3 (3) ["blue", true, "TANK"]0: "blue"1: true2: "TANK"length: 3__proto__: Array(0)
+undefined
+print(){
+    console.log('print Function Called....');
+}
+VM4768:1 Uncaught SyntaxError: Unexpected token '{'
+function print(){
+    console.log('print Function Called....');
+}
+undefined
+function Outer(fn){
+    console.log('INside OUter Function');
+    fn();
+}
+undefined
+Outer(print);
+VM4914:2 INside OUter Function
+VM4785:2 print Function Called....
+undefined
+function print(a,b){
+    console.log('print Function Called.... ',a+b);
+}
+undefined
+function Outer(fn){
+    let x=12,y=23;
+    console.log('INside OUter Function');
+    fn(x,y);
+}
+undefined
+Outer(print);
+VM5091:3 INside OUter Function
+VM5025:2 print Function Called....  35
+undefined
+Outer(print());
+VM5025:2 print Function Called....  NaN
+VM5091:3 INside OUter Function
+VM5091:4 Uncaught TypeError: fn is not a function
+    at Outer (<anonymous>:4:5)
+    at <anonymous>:1:1
+Outer @ VM5091:4
+(anonymous) @ VM5235:1
+Outer(function (a,b){return a+b;});
+VM5091:3 INside OUter Function
+undefined
+Outer(arg = function (a,b){return a+b;});
+VM5091:3 INside OUter Function
+undefined
+functio Outer(fn){
+    console.log(fn);
+}
+VM5623:1 Uncaught SyntaxError: Unexpected identifier
+function Outer(fn){
+    console.log(fn);
+}
+undefined
+Outer(print);
+VM5639:2 ƒ print(a,b){
+    console.log('print Function Called.... ',a+b);
+}
+undefined
+Outer(function (){
+    console.log('Function expression');
+});
+VM5639:2 ƒ (){
+    console.log('Function expression');
+}
+undefined
+Outer(add = function (){
+    console.log('Function expression');
+});
+VM5639:2 ƒ (){
+    console.log('Function expression');
+}
+undefined
+function Outer(fn){
+    console.log(fn);
+}
+undefined
+function Outer(fn){
+    console.log('Before Calling FN');
+    fn();
+    console.log('After Calling FN');
+}
+undefined
+Outer(print);
+VM6041:2 Before Calling FN
+VM5025:2 print Function Called....  NaN
+VM6041:4 After Calling FN
+undefined
+Outer(function (){
+    console.log('Function expression');
+});
+VM6041:2 Before Calling FN
+VM6145:2 Function expression
+VM6041:4 After Calling FN
+undefined
+Outer(add = function (){
+    console.log('Function expression');
+});
+VM6041:2 Before Calling FN
+VM6189:2 Function expression
+VM6041:4 After Calling FN
+undefined
+arr
+(4) [23, "blue", true, "TANK"]
+arr.push(100);
+5
+arr.push(false);
+6
+arr
+(6) [23, "blue", true, "TANK", 100, false]
+for(let item of arr){
+    console.log(item);
+}
+VM6584:2 23
+VM6584:2 blue
+VM6584:2 true
+VM6584:2 TANK
+VM6584:2 100
+VM6584:2 false
+undefined
+arr.forEach(function(item){
+    console.log(item);
+});
+VM6740:2 23
+VM6740:2 blue
+VM6740:2 true
+VM6740:2 TANK
+VM6740:2 100
+VM6740:2 false
+undefined
+arr.length
+6
+arr.find(function(item){
+    item == 50;
+});
+undefined
+arr.find(function(item){
+    item == 100;
+});
+undefined
+arr.find(function(item){
+    return item == 100;
+});
+100
+arr.find(function(item){
+    return item == 50;
+});
+undefined
+arr.find( (element)=>element==100 );
+100
+arr.find( element=>element==100 );
+100
+arr.find( element=>element==2 );
+undefined
+arr.findIndex( element=>element==100 );
+4
+arr
+(6) [23, "blue", true, "TANK", 100, false]0: 231: "blue"2: true3: "TANK"4: 1005: falselength: 6__proto__: Array(0)
+arr.filter( element=>element==100 );
+[100]
+arr.filter( element=> element );
+(5) [23, "blue", true, "TANK", 100]
+arr.filter( element=> typeof element == 'string' );
+(2) ["blue", "TANK"]
+arr.filter( element=> element >2 );
+(2) [23, 100]
+arr.includes();
+false
+arr.includes('TANK');
+true
+arr.includes(100);
+true
+arr.includes(20);
+false
+arr.reverse();
+(6) [false, 100, "TANK", true, "blue", 23]
+arr.shift();
+false
+arr
+(5) [100, "TANK", true, "blue", 23]
+arr.unshift(200,300,true,'Sam');
+9
+arr
+(9) [200, 300, true, "Sam", 100, "TANK", true, "blue", 23]0: 2001: 3002: true3: "Sam"4: 1005: "TANK"6: true7: "blue"8: 23length: 9__proto__: Array(0)
+arr.pop();
+23
+arr.pop();
+"blue"
+arr
+(7) [200, 300, true, "Sam", 100, "TANK", true]
+arr.push(23,'blue',false);
+10
+arr.map( element=>element*2 );
+(10) [400, 600, 2, NaN, 200, NaN, 2, 46, NaN, 0]0: 4001: 6002: 23: NaN4: 2005: NaN6: 27: 468: NaN9: 0length: 10__proto__: Array(0)
+true+true;
+2
+arr = arr.filter( ele=>ele!=NaN );
+(10) [200, 300, true, "Sam", 100, "TANK", true, 23, "blue", false]
+arr = arr.map( element=>element*2 );
+(10) [400, 600, 2, NaN, 200, NaN, 2, 46, NaN, 0]
+arr
+(10) [400, 600, 2, NaN, 200, NaN, 2, 46, NaN, 0]
+arr = arr.filter( ele=>ele!=NaN );
+(10) [400, 600, 2, NaN, 200, NaN, 2, 46, NaN, 0]
+arr
+(10) [400, 600, 2, NaN, 200, NaN, 2, 46, NaN, 0]
+arr
+(10) [400, 600, 2, NaN, 200, NaN, 2, 46, NaN, 0]
+arr.forEach(ele=>console.log(ele));
+VM9132:1 400
+VM9132:1 600
+VM9132:1 2
+VM9132:1 NaN
+VM9132:1 200
+VM9132:1 NaN
+VM9132:1 2
+VM9132:1 46
+VM9132:1 NaN
+VM9132:1 0
+undefined
+arr = arr.filter( ele=> typeof ele != 'NaN' );
+(10) [400, 600, 2, NaN, 200, NaN, 2, 46, NaN, 0]
+arr = arr.filter( ele=> typeof ele != NaN );
+(10) [400, 600, 2, NaN, 200, NaN, 2, 46, NaN, 0]
+arr.filter( ele=> ele );
+(6) [400, 600, 2, 200, 2, 46]
+arr
+(10) [400, 600, 2, NaN, 200, NaN, 2, 46, NaN, 0]
+arr = arr.filter( ele=> ele );
+(6) [400, 600, 2, 200, 2, 46]
+arr
+(6) [400, 600, 2, 200, 2, 46]
+arr.slice(0);
+(6) [400, 600, 2, 200, 2, 46]0: 4001: 6002: 23: 2004: 25: 46length: 6__proto__: Array(0)
+arr.slice(3);
+(3) [200, 2, 46]
+arr.slice(2,5);
+(3) [2, 200, 2]
+arr.slice(2,10);
+(4) [2, 200, 2, 46]
+arr.splice(2,1,9999);
+[2]0: 2length: 1__proto__: Array(0)
+arr
+(6) [400, 600, 9999, 200, 2, 46]
+temp = arr;
+(6) [400, 600, 9999, 200, 2, 46]
+temp=[];
+[]
+temp = arr;
+(6) [400, 600, 9999, 200, 2, 46]
+temp.splice(0);
+(6) [400, 600, 9999, 200, 2, 46]
+temp
+[]
+arr.sort();
+[]
+arr
+[]
+var arr = [23,'blue',true,'TANK'];
+undefined
+arr =[];
+[]
+arr.push(100);
+1
+arr.push(200);
+2
+arr.push(300);
+3
+arr.push(334);
+4
+arr.push(994);
+5
+arr
+(5) [100, 200, 300, 334, 994]
+arr.unshift(9999,1234,451)
+8
+arr
+(8) [9999, 1234, 451, 100, 200, 300, 334, 994]
+arr.sort();
+(8) [100, 1234, 200, 300, 334, 451, 994, 9999]0: 1001: 12342: 2003: 3004: 3345: 4516: 9947: 9999length: 8__proto__: Array(0)
+arr.sort((a,b)=>a+b);
+(8) [100, 1234, 200, 300, 334, 451, 994, 9999]
+arr.sort((a,b)=>a-b);
+(8) [100, 200, 300, 334, 451, 994, 1234, 9999]
+arr.sort((a,b)=>b-a);
+(8) [9999, 1234, 994, 451, 334, 300, 200, 100]

@@ -68,10 +68,40 @@ function checkOperator(expression){
 
 
 function createButton(btns,expression){
-    let arr=['+','-','*','/','=','C'];
-    
-    for(let i=1;i<=9;i++){
-    
+    let arr=['+','-','*','=','C','/'];
+    let k=0;
+    for( let i=9 ; i>=0 ; i-- ){
+        
+        if(i==6 || i==3 || i==0){
+            let btn = document.createElement('button'); 
+            let br = document.createElement('br');
+            btn.className = "btn btn-warning m-2 p-3";
+            btn.value = arr[k];
+            btn.innerText = arr[k];
+            k++;
+            btn.addEventListener('click',function(){
+                expression.value += btn.value;
+                checkOperator(expression);
+            });
+            btns.appendChild(btn);
+            btns.appendChild(br);
+        }
+
+        if(i==0){
+            let btn = document.createElement('button'); 
+            
+            btn.className = "btn btn-warning m-2 p-3";
+            btn.value = arr[k];
+            btn.innerText = arr[k];
+            k++;
+            btn.addEventListener('click',function(){
+                expression.value = eval(expression.value);
+                checkOperator(expression);
+            });
+            btns.appendChild(btn);
+            
+        }
+
         let btn = document.createElement('button');
         btn.className = "btn btn-success m-2 p-3";
         btn.value = i;
@@ -81,27 +111,28 @@ function createButton(btns,expression){
             checkOperator(expression);
         });
         btns.appendChild(btn);
+
     }
-    for(let item of arr){
-        let btn = document.createElement('button');
-        btn.className = "btn btn-warning mr-2 p-3";
-        btn.value = item;
-        btn.innerText = item;
+
+    while(k<arr.length){
+        let btn = document.createElement('button'); 
+            
+        btn.className = "btn btn-warning m-2 p-3";
+        btn.value = arr[k];
+        btn.innerText = arr[k];
+        k++;
         btn.addEventListener('click',function(){
-            if(item == 'C'){
-                clear(expression);
-            }
-            else if(item == '='){
-                evaluate(expression);
+            if(btn.value == 'C'){
+                expression.value = "";
             }
             else{
-                expression.value += item;
+                expression.value += btn.value;
                 checkOperator(expression);
             }
+            
         });
         btns.appendChild(btn);
     }
-
 }
 
 function evaluate(expression){
