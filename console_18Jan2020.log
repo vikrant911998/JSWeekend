@@ -1,0 +1,132 @@
+console.log('Work Start Here...');
+VM450:1 Work Start Here...
+undefined
+function print(){
+    console.log('Print Function Called..');
+}
+
+setTimeout(print,3000);
+1
+VM738:2 Print Function Called..
+function print(){
+    console.log('Print Function Called..');
+}
+
+setTimeout(print,3000);
+2
+VM761:2 Print Function Called..
+function print(){
+    console.log('Print Function Called..');
+}
+
+setTimeout(print(),3000);
+VM884:2 Print Function Called..
+3
+function print(){
+    console.log('Print Function Called..');
+}
+
+setTimeout(print,3000);
+4
+VM931:2 Print Function Called..
+setTimeout(function(){
+    console.log('Async Function');
+},4000);
+5
+VM1099:2 Async Function
+setTimeout(()=>{
+    console.log('Async Function');
+},4000);
+6
+VM1153:2 Async Function
+console.log('Start');
+
+setTimeout(()=>{
+    console.log('Async Function');
+},4000);
+
+console.log('end');
+
+VM1341:1 Start
+VM1341:7 end
+undefined
+VM1341:4 Async Function
+console.log('Start');
+
+let temp = setTimeout(()=>{
+    return 500;
+},4000);
+
+console.log('end');
+
+VM1445:1 Start
+VM1445:7 end
+undefined
+temp
+8
+function performAsync(){
+    console.log('Start');
+}
+undefined
+function performAsync(){
+    console.log('Start');
+
+    setTimeout(()=>{
+        return 500;
+    },3000);
+    
+    console.log('End');
+}
+undefined
+let temp = performAsync();
+VM2568:1 Uncaught SyntaxError: Identifier 'temp' has already been declared
+    at <anonymous>:1:1
+(anonymous) @ VM2568:1
+var temp = performAsync();
+VM2597:1 Uncaught SyntaxError: Identifier 'temp' has already been declared
+    at <anonymous>:1:1
+(anonymous) @ VM2597:1
+var temp1 = performAsync();
+VM1777:2 Start
+VM1777:8 End
+undefined
+function performAsync(){
+    console.log('Start');
+
+    setTimeout(()=>{
+        console.log('Async');
+        return 500;
+    },3000);
+    
+    console.log('End');
+}
+undefined
+var temp1 = performAsync();
+VM2672:2 Start
+VM2672:9 End
+undefined
+VM2672:5 Async
+temp1
+undefined
+function callback(a){
+    console.log('Inside callback ',a);
+}
+
+function performAsync(fn){
+    console.log('Start');
+
+    setTimeout(()=>{
+        console.log('Inside Set time OUt');
+
+        fn(500);
+    },4000);
+
+    console.log('End');
+}
+
+performAsync(callback);
+VM3412:6 Start
+VM3412:14 End
+undefined
+VM3412:9 Inside Set time OUt
+VM3412:2 Inside callback  500
