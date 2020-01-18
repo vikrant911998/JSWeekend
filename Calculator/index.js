@@ -23,12 +23,12 @@ window.addEventListener('load',init);
 
 
 function init(){
-    var expression = document.querySelector('#expr');
+    let expression = document.querySelector('#expr');
     // expression.addEventListener('change',()=>{
     //     checkOperator(expression);
     // });
 
-    var btns = document.querySelector('#btns');
+    let btns = document.querySelector('#btns');
     createButton(btns,expression);
 
 }
@@ -41,18 +41,43 @@ function checkOperator(expression){
 
     let last1 = false;
     let last2 = false;
+    let last3 = false;
     let lastCharacter;
+    let temp3;
 
     for(let item of operators){
         if(characters[length-1] == item){
             last1 = true;
         }
         if(characters[length-2] == item){
-            last2 = true;
+
+            if(characters[length-2] == '*' && characters[length-1]=='-'){
+
+            }
+            else{
+                last2 = true;
+                
+            }
+            
         }
+
+        if(characters[length-3]=='*' && characters[length-2] =='-' && characters[length-1]==item){
+            last3 = true;
+        }
+
+
     }
 
-    if(last1 && last2){
+    if(last3){
+        // console.log('inside the last 3');
+        temp3 = characters.pop();
+        characters.pop();
+        characters.pop();
+        characters.push(temp3);
+    }
+
+    else if(last1 && last2){
+        // console.log('inside the last 1 and 2');
         lastCharacter = characters.pop();
         characters.pop();
         characters.push(lastCharacter);
@@ -63,7 +88,7 @@ function checkOperator(expression){
         expression.value += item;
     }
     
-    console.log('CheckOperator Finished.....');
+    // console.log('CheckOperator Finished.....');
 }
 
 
@@ -133,11 +158,40 @@ function createButton(btns,expression){
         });
         btns.appendChild(btn);
     }
+
+
+    let btn = document.createElement('button');
+    btn.className = "btn btn-danger m-2 p-3";
+    btn.innerText = 'DEL';
+    btn.addEventListener( 'click', function(){
+        deleteLast(expression);
+    } );
+    btns.appendChild(btn);
+
 }
 
-function evaluate(expression){
-    expression.value = eval(expression.value);
+
+function deleteLast(expression){
+    let characters = expression.value.split('');
+    characters.pop();
+    expression.value = "";
+
+    for(let item of characters){
+        expression.value +=item;
+    }
 }
+
+
+
+
+function evaluate(expression){
+
+    expression.value = eval(expression.value);
+
+}
+
+
+
 
 function clear(expression){
     expression.value = "";
