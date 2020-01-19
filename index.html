@@ -6,19 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="./index.js"></script>
+    
 </head>
 <body>
-    <div class="container">
+   
+        <button class="btn btn-success">GET DATA</button>
+   
 
-        <h1 class="alert-primary text-center">CALC</h1>
-        <br>
-        <input id="expr" class="form-control" type="text" placeholder="Enter The Expression">
-        <br>
-        <!-- <button id="calc" class="btn btn-success">Calculate</button> -->
-        <div id="btns">
+    <script>
+        const url = 'https://raw.githubusercontent.com/brainmentorspvtltd/myserverdata/master/mobiles.json';
+        
+        var button = document.getElementsByTagName('button')[0];
+        button.addEventListener('click',function(){
 
-        </div>
-    </div>
+            var promise = fetch(url,{
+                method:'GET'
+            });
+
+            promise.then(response=>{
+                response.json().then(data=>{
+                    console.log(data);
+
+                }).catch(err=>console.log(err));
+
+            }).catch(err=>console.log(err));
+
+
+        });
+
+
+    </script>
 </body>
 </html>

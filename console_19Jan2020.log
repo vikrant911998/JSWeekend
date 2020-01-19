@@ -1,0 +1,428 @@
+function callback(a){
+    console.log('Inside callback ',a);
+}
+
+function performAsync(fn){
+    console.log('Start');
+
+    setTimeout(()=>{
+        console.log('Inside Set time OUt');
+
+        fn(500);
+    },4000);
+
+    console.log('End');
+}
+
+performAsync(callback);
+VM142:6 Start
+VM142:14 End
+undefined
+VM142:9 Inside Set time OUt
+VM142:2 Inside callback  500
+Promise();
+VM216:1 Uncaught TypeError: undefined is not a promise
+    at Promise (<anonymous>)
+    at <anonymous>:1:1
+(anonymous) @ VM216:1
+Promise;
+ƒ Promise() { [native code] }
+
+
+function performAsync(){
+    console.log('Start');
+
+    let pr = new Promise(()=>{
+        
+    });
+
+    console.log('End');
+
+    return pr;
+}
+
+
+undefined
+
+
+function performAsync(){
+    console.log('Start');
+
+    let pr = new Promise((res,rej)=>{
+        
+        setTimeout(()=>{
+            console.log('Inside Set time OUt');
+            res(500);
+           
+        },4000);
+        
+
+    });
+
+    console.log('End');
+
+    return pr;
+}
+
+
+var promise = performAsync();
+
+promise.then((data)=>{
+    console.log(data);
+
+}).catch((err)=>{
+    console.log('Error ',err);
+});
+
+
+VM939:4 Start
+VM939:17 End
+Promise {<pending>}__proto__: Promise[[PromiseStatus]]: "resolved"[[PromiseValue]]: undefined
+VM939:9 Inside Set time OUt
+VM939:26 500
+promise
+Promise {<resolved>: 500}__proto__: Promise[[PromiseStatus]]: "resolved"[[PromiseValue]]: 500
+
+
+function performAsync(){
+    console.log('Start');
+
+    let pr = new Promise((res,rej)=>{
+        
+        setTimeout(()=>{
+            console.log('Inside Set time OUt');
+            rej(500);
+           
+        },4000);
+        
+
+    });
+
+    console.log('End');
+
+    return pr;
+}
+
+
+var promise = performAsync();
+
+promise.then((data)=>{
+    console.log(data);
+
+}).catch((err)=>{
+    console.log('Error ',err);
+});
+
+
+VM1068:4 Start
+VM1068:17 End
+Promise {<pending>}__proto__: Promise[[PromiseStatus]]: "resolved"[[PromiseValue]]: undefined
+VM1068:9 Inside Set time OUt
+VM1068:29 Error  500
+promise
+Promise {<rejected>: 500}__proto__: Promise[[PromiseStatus]]: "rejected"[[PromiseValue]]: 500
+
+
+function performAsync(){
+    console.log('Start');
+
+    let pr = new Promise((res,rej)=>{
+        
+        setTimeout(()=>{
+            console.log('Inside Set time OUt');
+            res(500);
+           
+        },4000);
+        
+
+    });
+
+    console.log('End');
+
+    return pr;
+}
+
+
+var promise = performAsync();
+var promiseData;
+promise.then((data)=>{
+//     console.log( data);
+    promiseData = data;
+
+}).catch((err)=>{
+    console.log('Error ',err);
+});
+
+
+VM1286:4 Start
+VM1286:17 End
+Promise {<pending>}
+VM1286:9 Inside Set time OUt
+promiseData
+500
+
+
+function performAsync(){
+    console.log('Start');
+
+    let pr = new Promise((res,rej)=>{
+        
+        setTimeout(()=>{
+            console.log('Inside Set time OUt');
+            res(500);
+           
+        },4000);
+        
+
+    });
+
+    console.log('End');
+
+    return pr;
+}
+
+
+var promise = performAsync();
+var promiseData1;
+
+promise.then((data)=>{
+
+    promiseData = data;
+
+}).catch((err)=>{
+    console.log('Error ',err);
+});
+console.log(promiseData1);
+
+
+VM1454:4 Start
+VM1454:17 End
+VM1454:33 undefined
+undefined
+VM1454:9 Inside Set time OUt
+promiseData1
+undefined
+
+
+function performAsync(){
+    console.log('Start');
+
+    let pr = new Promise((res,rej)=>{
+        
+        setTimeout(()=>{
+            console.log('Inside Set time OUt');
+            res(500);
+           
+        },4000);
+        
+
+    });
+
+    console.log('End');
+
+    return pr;
+}
+
+
+var promise = performAsync();
+var promiseData1;
+
+promise.then((data)=>{
+
+    promiseData1 = data;
+
+}).catch((err)=>{
+    console.log('Error ',err);
+});
+console.log(promiseData1);
+
+
+VM1525:4 Start
+VM1525:17 End
+VM1525:33 undefined
+undefined
+VM1525:9 Inside Set time OUt
+promiseData1
+500
+function cube(num){
+    let pr = new Promise((resolve,reject)=>{
+            
+        setTimeout(()=>{
+            if(num >5){
+                resolve(num*num*num);
+            }
+            else{
+                reject(404);
+            }
+        },5000);
+
+    }
+    );
+
+    return pr;
+
+}
+undefined
+
+Promise.all([cube(7),cube(8),cube(9),cube(10),cube(11)]).then(data=>{
+    console.log(data);
+}).catch(err=>{
+    console.log(err);
+});
+Promise {<pending>}
+VM3569:3 (5) [343, 512, 729, 1000, 1331]
+
+Promise.all([cube(7),cube(8),cube(2),cube(10),cube(11)]).then(data=>{
+    console.log(data);
+}).catch(err=>{
+    console.log(err);
+});
+Promise {<pending>}
+VM3663:5 404
+function add(a,b){
+    return a+b;
+}
+undefined
+add(2,3);
+5
+var r1 = add(2,3);
+undefined
+r1
+5
+async function add(a,b){
+    return a+b;
+}
+undefined
+var r1 = add(2,3);
+undefined
+r1
+Promise {<resolved>: 5}__proto__: Promise[[PromiseStatus]]: "resolved"[[PromiseValue]]: 5
+var r1 = await add(2,3);
+undefined
+r1
+5
+var r1 = await cube(3);
+Uncaught (in promise) 404
+setTimeout (async)
+(anonymous) @ VM2178:4
+cube @ VM2178:2
+(anonymous) @ VM4416:1
+(anonymous) @ VM4416:2
+about:blank:1 Uncaught (in promise) 404
+setTimeout (async)
+(anonymous) @ VM2178:4
+cube @ VM2178:2
+(anonymous) @ VM4416:1
+(anonymous) @ VM4416:2
+var r1 = await cube(6);
+undefined
+r1
+216
+function dependentCalls(num){
+    let p1 = await cube(num);
+    console.log(p1);
+
+}
+dependentCalls(6);
+VM4831:2 Uncaught SyntaxError: await is only valid in async function
+async function dependentCalls(num){
+    let p1 = await cube(num);
+    console.log(p1);
+
+}
+dependentCalls(6);
+Promise {<pending>}__proto__: Promise[[PromiseStatus]]: "resolved"[[PromiseValue]]: undefined
+VM4891:3 216
+async function dependentCalls(num){
+    let p1 = await cube(num);
+    console.log(p1);
+    let p2 = await cube(num+1);
+    console.log(p2);
+    let p3 = await cube(num+2);
+    console.log(p3);
+    let p4 = await cube(num+3);
+    console.log(p4);
+    let p5 = await cube(num+4);
+    console.log(p5);
+}
+dependentCalls(6);
+Promise {<pending>}
+VM5285:3 216
+VM5285:5 343
+VM5285:7 512
+VM5285:9 729
+VM5285:11 1000
+async function dependentCalls(num){
+    let p1 = await cube(num);
+    console.log(p1);
+    let p2 = await cube(num+1);
+    console.log(p2);
+    let p3 = await cube(num+2);
+    console.log(p3);
+    let p4 = await cube(num-3);
+    console.log(p4);
+    let p5 = await cube(num+4);
+    console.log(p5);
+}
+dependentCalls(6);
+Promise {<pending>}
+VM5353:3 216
+VM5353:5 343
+VM5353:7 512
+VM5353:12 Uncaught (in promise) 404
+dependentCalls @ VM5353:12
+async function (async)
+dependentCalls @ VM5353:2
+(anonymous) @ VM5353:13
+async function dependentCalls(num){
+    let p1 = await cube(num);
+    console.log(p1);
+    let p2 = await cube(num+1);
+    console.log(p2);
+    let p3 = await cube(num+2);
+    console.log(p3);
+
+    try{
+    let p4 = await cube(num-3);
+    console.log(p4);
+    }
+    catch{
+        console.log('Small Number exception handled');
+    }
+
+    let p5 = await cube(num+4);
+    console.log(p5);
+}
+dependentCalls(6);
+Promise {<pending>}
+VM5539:3 216
+VM5539:5 343
+VM5539:7 512
+VM5539:14 Small Number exception handled
+VM5539:18 1000
+var url = 'https://raw.githubusercontent.com/brainmentorspvtltd/myserverdata/master/mobiles.json';
+var promise = fetch(url);
+
+promise.then(data=>{
+    console.log('Mobiles data = ',data);
+}).catch(err=>{
+    console.log('Error while retrieving mobiles data ',err);
+});
+Promise {<pending>}
+VM6253:5 Mobiles data =  Response {type: "cors", url: "https://raw.githubusercontent.com/brainmentorspvtltd/myserverdata/master/mobiles.json", redirected: false, status: 200, ok: true, …}
+var url = 'https://raw.githubusercontent.com/brainmentorspvtltd/myserverdata/master/mobiles.json';
+var promise = fetch(url);
+
+promise.then(response=>{
+    
+    response.json().then(data=>{
+        console.log('Mobiles data = ',data);
+    }).catch(err=>{
+        console.log('Error = ',err);
+    });
+
+}).catch(err=>{
+    console.log('Error while retrieving mobiles data ',err);
+});
+Promise {<pending>}
+VM6568:7 Mobiles data =  {mobiles: Array(4)}mobiles: Array(4)0: id: 1001name: "Samsung Mobile"price: 30000url: "http://c2c.sulekhalive.com/lcproducts/mobiles/images/samsung/album/large/samsung-z3(2).jpg"__proto__: Object1: {id: 1002, name: "Apple Mobile", price: 40000, url: "https://4.imimg.com/data4/LY/WP/GLADMIN-8934545/apple-mobiles-500x500.jpg"}2: {id: 1003, name: "Lg Mobile", price: 20000, url: "http://www.lg.com/uk/images/mobile-phones/MD05609550/stylus-350.jpg"}3: {id: 1004, name: "MI Mobile", price: 10000, url: "https://www.91-img.com/pictures/xiaomi-mi-5s-mobile-phone-large-1.jpg"}length: 4__proto__: Array(0)__proto__: Object
