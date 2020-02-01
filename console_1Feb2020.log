@@ -1,0 +1,308 @@
+var obj = {
+    id:101,
+    name:'Vikrant',
+    age:23
+};
+undefined
+JSON.stringify(obj);
+"{"id":101,"name":"Vikrant","age":23}"
+obj
+{id: 101, name: "Vikrant", age: 23}
+temp = JSON.stringify(obj);
+"{"id":101,"name":"Vikrant","age":23}"
+var obj1 = {
+    id:102,
+    name:'Rahul',
+    age:27
+};
+undefined
+var arr = [obj,obj1];
+undefined
+temp = JSON.stringify(arr);
+"[{"id":101,"name":"Vikrant","age":23},{"id":102,"name":"Rahul","age":27}]"
+temp
+"[{"id":101,"name":"Vikrant","age":23},{"id":102,"name":"Rahul","age":27}]"
+arr
+(2) [{…}, {…}]0: {id: 101, name: "Vikrant", age: 23}1: {id: 102, name: "Rahul", age: 27}length: 2__proto__: Array(0)
+final = {objects:arr};
+{objects: Array(2)}
+temp = JSON.stringify(final);
+"{"objects":[{"id":101,"name":"Vikrant","age":23},{"id":102,"name":"Rahul","age":27}]}"
+temp
+"{"objects":[{"id":101,"name":"Vikrant","age":23},{"id":102,"name":"Rahul","age":27}]}"
+temp = JSON.parse(temp);
+{objects: Array(2)}objects: (2) [{…}, {…}]__proto__: Object
+function print(){
+    console.log('Print Function Called....');
+}
+setTimeout(print,2000);
+1
+VM1768:2 Print Function Called....
+
+setTimeout( function(){
+    console.log('Inside SetTimeOut...');
+} , 2000 );
+2
+VM2076:3 Inside SetTimeOut...
+function AsyncDemo(){
+   setTimeout( function(){
+        console.log('Inside SetTimeOut...');
+    } , 3000 ); 
+}
+undefined
+AsyncDemo();
+undefined
+VM2179:3 Inside SetTimeOut...
+function AsyncDemo(){
+    let sum = 10;
+    
+   setTimeout( function(){
+        console.log('Inside SetTimeOut...');
+    } , 3000 ); 
+    
+    return sum;
+}
+undefined
+temp = AsyncDemo();
+10
+VM2283:5 Inside SetTimeOut...
+temp
+10
+function AsyncDemo(){
+    let sum = 10;
+    
+   setTimeout( function(){
+        console.log('Inside SetTimeOut...');
+        return sum;
+    } , 3000 ); 
+    
+    
+}
+undefined
+temp1 = AsyncDemo();
+undefined
+VM2453:5 Inside SetTimeOut...
+temp1
+undefined
+function callBack1(data){
+    temp1 = data;
+    console.log('Inside CallBack1');
+}
+undefined
+function AsyncDemo(func){
+    let sum = 10;
+    
+   setTimeout( function(){
+        console.log('Inside SetTimeOut...');
+        func(sum); //callBack1(sum) ->callBack1(10)
+    } , 3000 ); 
+      
+}
+
+AsyncDemo(callBack1);
+undefined
+VM3139:5 Inside SetTimeOut...
+VM2802:3 Inside CallBack1
+temp1
+10
+function AsyncDemo(){
+    
+   let pr = new Promise();
+     
+      
+}
+
+
+undefined
+function AsyncDemo(num){
+   
+   let pr = new Promise( (resolve,reject)=>{
+
+        setTimeout( function(){
+            console.log('Inside SetTimeOut...');
+            if(num >10){
+                resolve(num**2);
+            }
+            else{
+                reject(num**3);
+            }
+        } , 3000 );
+    
+    }); 
+   
+    return pr;
+}
+
+
+undefined
+var promise = AsyncDemo(12);
+promise.then( data=>console.log(data) ).catch( err=>console.log(err) );
+Promise {<pending>}
+VM3874:6 Inside SetTimeOut...
+VM4205:2 144
+var promise = AsyncDemo(12);
+promise.then( print ).catch( print );
+Promise {<pending>}
+VM3874:6 Inside SetTimeOut...
+VM1768:2 Print Function Called....
+function print(num){
+    console.log(num);
+}
+undefined
+var promise = AsyncDemo(12);
+promise.then( print ).catch( print );
+Promise {<pending>}
+VM3874:6 Inside SetTimeOut...
+VM4496:2 144
+var promise = AsyncDemo(3);
+promise.then( print ).catch( print );
+Promise {<pending>}
+VM3874:6 Inside SetTimeOut...
+VM4496:2 27
+promise
+Promise {<rejected>: 27}
+var promise = AsyncDemo(12);
+promise.then( print ).catch( print );
+Promise {<pending>}
+VM3874:6 Inside SetTimeOut...
+VM4496:2 144
+promise
+Promise {<resolved>: 144}__proto__: Promiseconstructor: ƒ Promise()then: ƒ then()catch: ƒ catch()finally: ƒ finally()Symbol(Symbol.toStringTag): "Promise"__proto__: Object[[PromiseStatus]]: "resolved"[[PromiseValue]]: 144
+var url = 'https://raw.githubusercontent.com/brainmentorspvtltd/myserverdata/master/products.json';
+
+promise = fetch(url);
+
+promise.then(function(response){
+    response.json().then( data=>{
+        console.log(data);
+
+    }).catch( err=>{
+        console.log(err);
+        
+    });
+    
+})
+.catch( function(err){
+    console.log('Request Rejected from Server');
+});
+Promise {<pending>}
+VM5538:7 (4) [{…}, {…}, {…}, {…}]0: {id: 1001, name: "Samsung Mobile", price: 30000, url: "http://c2c.sulekhalive.com/lcproducts/mobiles/images/samsung/album/large/samsung-z3(2).jpg"}id: 1001name: "Samsung Mobile"price: 30000url: "http://c2c.sulekhalive.com/lcproducts/mobiles/images/samsung/album/large/samsung-z3(2).jpg"__proto__: Object1: {id: 1002, name: "Apple Mobile", price: 40000, url: "https://4.imimg.com/data4/LY/WP/GLADMIN-8934545/apple-mobiles-500x500.jpg"}2: {id: 1003, name: "Lg Mobile", price: 20000, url: "http://www.lg.com/uk/images/mobile-phones/MD05609550/stylus-350.jpg"}3: {id: 1004, name: "MI Mobile", price: 10000, url: "https://www.91-img.com/pictures/xiaomi-mi-5s-mobile-phone-large-1.jpg"}length: 4__proto__: Array(0)
+promise
+Promise {<resolved>: Response}__proto__: Promise[[PromiseStatus]]: "resolved"[[PromiseValue]]: Response
+class Student{
+    constructor(id){
+        this.id = id;
+    }
+    
+    static print(){
+        console.log('Static Function Called....');
+    }
+    
+    display(){
+        console.log('Non-Static Display Function....');
+    }
+}
+undefined
+obj = new Student(101);
+Student {id: 101}
+obj.display();
+VM6620:11 Non-Static Display Function....
+undefined
+obj.print();
+VM6761:1 Uncaught TypeError: obj.print is not a function
+    at <anonymous>:1:5
+(anonymous) @ VM6761:1
+Student.print();
+VM6620:7 Static Function Called....
+undefined
+Promise.all([AsyncDemo(12),AsyncDemo(13),AsyncDemo(14)])
+.then(data=>{
+    console.log(data)
+})
+.catch(err=> console.log(err));
+Promise {<pending>}
+VM3874:6 Inside SetTimeOut...
+VM3874:6 Inside SetTimeOut...
+VM3874:6 Inside SetTimeOut...
+VM7195:3 (3) [144, 169, 196]0: 1441: 1692: 196length: 3__proto__: Array(0)
+Promise.all([AsyncDemo(12),AsyncDemo(13),AsyncDemo(4)])
+.then(data=>{
+    console.log(data)
+})
+.catch(err=> console.log(err));
+Promise {<pending>}
+VM3874:6 Inside SetTimeOut...
+VM3874:6 Inside SetTimeOut...
+VM3874:6 Inside SetTimeOut...
+VM7229:5 64
+Promise.all([AsyncDemo(2),AsyncDemo(13),AsyncDemo(14)])
+.then(data=>{
+    console.log(data)
+})
+.catch(err=> console.log(err));
+Promise {<pending>}
+VM3874:6 Inside SetTimeOut...
+VM7270:5 8
+VM3874:6 Inside SetTimeOut...
+VM3874:6 Inside SetTimeOut...
+async function AsyncDemo(num){
+   
+   let pr = new Promise( (resolve,reject)=>{
+
+        setTimeout( function(){
+            console.log('Inside SetTimeOut...');
+            if(num >10){
+                resolve(num**2);
+            }
+            else{
+                reject(num**3);
+            }
+        } , 3000 );
+    
+    }); 
+   
+    return pr;
+}
+
+
+undefined
+function print(){
+    return 10;
+}
+undefined
+temp = print();
+10
+temp
+10
+async function print(){
+    return 10;
+}
+undefined
+temp = print();
+Promise {<resolved>: 10}
+var r1 = Asyc
+VM7700:1 Uncaught ReferenceError: Asyc is not defined
+    at <anonymous>:1:10
+(anonymous) @ VM7700:1
+var r1 = await AsyncDemo(12);
+console.log(r1);
+
+var r2 = await AsyncDemo(13);
+console.log(r2);
+
+VM7492:6 Inside SetTimeOut...
+VM7984:2 144
+VM7492:6 Inside SetTimeOut...
+VM7984:5 169
+undefined
+var r1 = await AsyncDemo(12);
+console.log(r1);
+
+var r2 = await AsyncDemo(r1);
+console.log(r2);
+
+VM7492:6 Inside SetTimeOut...
+VM8075:2 144
+VM7492:6 Inside SetTimeOut...
+VM8075:5 20736
+undefined
