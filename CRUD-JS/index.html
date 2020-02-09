@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="./models/userModel.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
+    <script src="./controllers/userController.js"></script>
+
+    <style>
+        .none{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="register" class="container">
+        <h1 class="bg-dark text-white text-center">REGISTER</h1>
+        <br>
+        <input id="userid" type="text" class="form-control" placeholder="Enter Username">
+        <br>
+        <input id="pwd" type="password" class="form-control" placeholder="Enter Password">
+        <br>
+        <button id="submitbtn" class="mr-2 btn btn-primary" >Submit</button>
+        <button id="resetbtn" class="btn btn-info" >Reset</button>
+    </div>
+
+    <div id="login" class="container none">
+        <h1 class="bg-dark text-white text-center">LOGIN</h1>
+        <br>
+        <input id="userid" type="text" class="form-control" placeholder="Enter Username">
+        <br>
+        <input id="pwd" type="password" class="form-control" placeholder="Enter Password">
+        <br>
+        <button id="submitLogin" class="mr-2 btn btn-primary" >Submit</button>
+        <button id="resetLogin" class="btn btn-info" >Reset</button>
+    </div>
+</body>
+</html>
