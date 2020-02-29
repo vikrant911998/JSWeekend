@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+
+    <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase.js"></script>
+    <script src="./util.js"></script>
+
+    <script src="./models/productModel.js"></script>
+    <script src="./models/productOperation.js"></script>
+    <script src="./controllers/dashboard.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center mb-5 p-2 alert-primary rounded">Dashboard</h1>
+      <div class="form-group">
+        <label for="">Product Id</label>
+        <label for="" class="form-control" id="id"></label>
+      </div>
+      <div class="form-group">
+        <label for="">Product Name</label>
+        <input type="text" class="form-control" id="name" />
+      </div>
+      <div class="form-group">
+        <label for="">Product Price</label>
+        <input type="text" class="form-control" id="price" />
+      </div>
+
+      <div class="form-group">
+        <label for="">Product Description</label>
+        <input type="text" class="form-control" id="desc" />
+      </div>
+
+      <div class="form-group">
+        <label for="">Product Category</label>
+        <select class="form-control" id="category">
+          <option value="Electronics">Electronics</option>
+          <option value="Mens">Mens</option>
+          <option value="Womens">Womens</option>
+          <option value="Childrens">Childrens</option>
+        </select>
+      </div>
+      <br /><br />
+      <div class="row">
+        <div class="col">
+          <button id="add" class="btn btn-primary w-100">Add</button>
+        </div>
+        <div class="col">
+          <button id="delete" class="btn btn-danger w-100">Delete</button>
+        </div>
+        <div class="col">
+          <button id="sort_btn" class="btn btn-dark w-100">Sort</button>
+        </div>
+        <div class="col">
+          <button id="update" class="btn btn-warning w-100">Update</button>
+        </div>
+        <div class="col">
+          <button id="savedb" class="btn btn-success w-100">Save DB</button>
+        </div>
+        <div class="col">
+          <button id="fetchdb" class="btn btn-info w-100">Fetch DB</button>
+        </div>
+      </div>
+      <h2 class="alert-dark m-5 text-center rounded">Product List</h2>
+
+      <table class="table table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">PRODUCT ID</th>
+            <th scope="col">PRODUCT NAME</th>
+            <th scope="col">PRODUCT PRICE</th>
+            <th scope="col">PRODUCT DETAILS</th>
+            <th scope="col">PRODUCT CATEGORY</th>
+            <th scope="col">OPTIONS</th>
+          </tr>
+        </thead>
+        <tbody id="result"></tbody>
+      </table>
+
+      <!-- <div id="result" class="">
+            <div class="row bg-dark p-3">
+                <div class="col text-white">
+                    PRODUCT ID
+                </div>
+                <div class="col text-white">
+                    PRODUCT NAME
+                </div>
+                <div class="col  text-white">
+                    PRODUCT PRICE
+                </div>
+                <div class="col  text-white">
+                    PRODUCT DETAILS
+                </div>
+                <div class="col  text-white">
+                    PRODUCT CATEGORY
+                </div>
+                <div class="col  text-white">
+                    OPTIONS
+                </div>
+            </div>
+        </div> -->
+    </div>
+  </body>
+</html>
