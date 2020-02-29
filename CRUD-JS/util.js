@@ -1,7 +1,7 @@
 
   // Your web app's Firebase configuration
   var firebaseConfig = {
-    apiKey: "AIzaSyA4h7AFQHLN16oFCh-6L3muuLC34IwoaMQ",
+    apiKey: "",
     authDomain: "crud-2019-269be.firebaseapp.com",
     databaseURL: "https://crud-2019-269be.firebaseio.com",
     projectId: "crud-2019-269be",
