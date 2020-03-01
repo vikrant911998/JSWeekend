@@ -15,14 +15,65 @@ function init() {
   let update_btn = document.querySelector("#update");
   let savedb_btn = document.querySelector("#savedb");
   let fetchdb_btn = document.querySelector("#fetchdb");
-  let sort_btn = document.querySelector("#sort_btn");
+  let sort_btn = document.querySelector("#sort");
 
   add_btn.addEventListener("click", add_product);
   delete_btn.addEventListener("click", delete_product);
   sort_btn.addEventListener("click", sort_product);
-  update_btn.addEventListener("click", update_product);
   savedb_btn.addEventListener("click", save_product);
   fetchdb_btn.addEventListener("click", fetch_product);
+  update_btn.addEventListener("click", update_product);
+}
+
+function update_product() {
+  let new_product_obj = new Product();
+
+  for (let key in new_product_obj) {
+    if (key == "id") {
+      new_product_obj[key] = document.querySelector("#" + key).innerText;
+    } else if (key == "isMarked") {
+      continue;
+    } else {
+      new_product_obj[key] = document.querySelector("#" + key).value;
+    }
+  }
+
+  let index = productOperations.products.findIndex(
+    product => product.id == new_product_obj.id
+  );
+
+  productOperations.products[index] = new_product_obj;
+
+  printProduct();
+
+  clearAll();
+  assignId();
+}
+
+function save_product() {
+  let promise = productOperations.save_on_server();
+
+  promise.then(() => alert("Data Saved...")).catch(err => console.log(err));
+}
+
+function fetch_product() {
+  let firebase_promise = productOperations.fetch_from_server();
+
+  firebase_promise.on("value", snapshot => {
+    productOperations.products = [];
+
+    let records = snapshot.val();
+    records.forEach(record => {
+      let productObj = new Product();
+      for (let key in productObj) {
+        productObj[key] = record[key];
+      }
+
+      productOperations.products.push(productObj);
+    });
+
+    printProduct();
+  });
 }
 
 function sort_product() {
@@ -92,7 +143,23 @@ function mark_delete() {
 }
 
 function mark_edit() {
-  this.parentNode.parentNode.className = "alert-primary";
+  let search_id = this.value;
+
+  let edit_obj = productOperations.products.find(
+    product => product.id == search_id
+  );
+
+  let id = document.querySelector("#id");
+  let name = document.querySelector("#name");
+  let price = document.querySelector("#price");
+  let desc = document.querySelector("#desc");
+  let category = document.querySelector("#category");
+
+  id.innerText = edit_obj.id;
+  name.value = edit_obj.name;
+  price.value = edit_obj.price;
+  desc.value = edit_obj.desc;
+  category.value = edit_obj.category;
 }
 
 function printProduct() {
@@ -153,3 +220,12 @@ function printProduct() {
 function assignId() {
   document.querySelector("#id").innerText = increase_counter();
 }
+
+// function *auto(){
+//   let num = 1;
+
+//   while(true){
+//       yield num;
+//       num++;
+//   }
+// }
